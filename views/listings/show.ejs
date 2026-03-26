@@ -1,0 +1,115 @@
+<%layout("/layouts/boilerplate")%>
+<div class="row mt-3">
+<div class="col-8 offset-2">
+    <h3><%=listing.title%></h3>
+    <div class="card listing-card">
+<br>
+      <img src="<%=listing.image.url%>" class="card-img-top show-img" alt="listing_image">
+      <div class="card-body">
+        <p class="card-text">Owned by <b><i><%=listing.owner.username%></i></b></p>
+        <p class="card-text"><%=listing.description%></p>
+        <p class="card-text"><b>&#8377 <%=listing.price.toLocaleString("en-IN")%> / night</b> </p>
+        <p class="card-text"><%=listing.location%> , <%=listing.country%></p>
+      </div>
+      <div class="row btns">
+
+          <% if(currUser && currUser._id.equals(listing.owner._id)){%>
+          <div class="col-2">
+              <a href="/listings/<%=listing._id%>/edit" class="btn btn-dark add-btn mt-3">Edit</a>
+          </div>
+          <div class="col-2">
+              <form method="post" action="/listings/<%=listing._id%>?_method=delete">
+                  <button class="btn btn-dark dark-btn mt-3">Delete</button>
+              </form>
+          </div>
+          <%}%>
+
+      </div>
+    </div>
+
+    <%if(currUser){%>
+        <hr><br>
+    <div class="review ">
+        <div class="enterReview">
+        <h4>Leave Review</h4>
+        <form action="/listings/<%=listing._id%>/reviews" novalidate class="needs-validation" method="post">
+            <div class="mb-3 mt-3">
+            <label for="rating" class="form-label">Rating</label>
+            <fieldset class="starability-slot">
+            <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="1" checked aria-label="No rating." />
+            <input type="radio" id="first-rate1" name="review[rating]" value="1" />
+            <label for="first-rate1" title="Terrible">1 star</label>
+            <input type="radio" id="first-rate2" name="review[rating]" value="2" />
+            <label for="first-rate2" title="Not good">2 stars</label>
+            <input type="radio" id="first-rate3" name="review[rating]" value="3" />
+            <label for="first-rate3" title="Average">3 stars</label>
+            <input type="radio" id="first-rate4" name="review[rating]" value="4" />
+            <label for="first-rate4" title="Very good">4 stars</label>
+            <input type="radio" id="first-rate5" name="review[rating]" value="5" />
+            <label for="first-rate5" title="Amazing">5 stars</label>
+            </fieldset>
+            </div>
+            <div class="mb-3 mt-3">
+                <label for="comment" class="form-label">Comments</label>
+                <textarea required name="review[comment]" id="comment" rows="5" cols="30" class="form-control"></textarea>
+                <div class="invalid-feedback">Please add some comment for review</div>
+            </div>
+            <button class="btn btn-dark add-btn mt-3">Submit</button>
+        </form>
+        </div>
+        <br>
+        <%}%>
+
+        <hr>
+        <br>
+        <p><b>All Reviews</b></p>
+        <div class="row">
+
+        <%for(review of listing.reviews){%>
+        <div class="card col-5 ms-4 mb-3">
+            <div class="card-body">
+                <h5 class="card-title">@<%=review.author.username%></h5>
+                <p class="starability-result card-text" data-rating=<%=review.rating%>></p>
+                <p class="card-text"><%=review.comment%></p>
+            </div>
+
+        <% if(currUser && review.author._id.equals(currUser._id)){ %>
+        <form action="/listings/<%=listing._id%>/reviews/<%=review._id%>?_method=delete" method="post" class="mb-3">
+            <button class="btn btn-sm btn-dark mt-3">Delete</button>
+        </form>
+        <% } %>
+
+        </div>
+        <%}%>
+        
+    </div><br><br>
+
+    <div id="map" style="height: 400px; width: 100%;"></div>
+    
+    </div>
+    
+    
+</div>
+</div>
+<br><br>
+
+<script>
+    const coordinates = <%- JSON.stringify(listing.geometry.coordinates) %>;
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const coordinates = <%- JSON.stringify(listing.geometry.coordinates) %>;
+
+    const map = L.map('map').setView([coordinates[1], coordinates[0]], 10);
+
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap'
+    }).addTo(map);
+
+    L.marker([coordinates[1], coordinates[0]])
+        .addTo(map)
+        .bindPopup("Listing Location")
+        .openPopup();
+});
+</script>
