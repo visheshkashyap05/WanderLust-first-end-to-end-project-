@@ -1,9 +1,14 @@
+if(process.env.NODE_ENV !="production"){
+    require('dotenv').config();
+}
+
+
 const mongoose = require("mongoose");
 const Listing = require("../models/listing");
 
-require("dotenv").config();
+const dbUrl=process.env.ATLASDB_URL;
 
-mongoose.connect("mongodb://127.0.0.1:27017/wanderlust")
+mongoose.connect(dbUrl)
 .then(() => {
     console.log("DB connected");
 })
