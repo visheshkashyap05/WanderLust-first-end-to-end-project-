@@ -30,6 +30,10 @@ body{
     border: none !important;
 }
 
+.btn-dark{
+    border: none !important;
+}
+
 /* navbar */
 .navbar{
     height:5rem;
@@ -40,6 +44,7 @@ body{
 .fa-compass{
     color: #fe424d;
     font-size: 2rem;
+    margin-top: 0.10rem;
 }
 
 .nav-link{
@@ -187,11 +192,11 @@ body{
         height: 189.59px !important;
     }
     .page-body{
-        padding-left: 1.5rem;
-        padding-right: 1.5rem;
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
     }
     .search-inp{
-        width: 50%;
+        width: 100%;
         font-size: 0.88rem;
         padding: 0.5rem 1.5rem 0.5rem 1.5rem;
     }
@@ -200,8 +205,15 @@ body{
         padding: 0.25rem 0.5rem 0.25rem 0.5rem;
     }
     .index-page{
-        padding-left: 1.5rem;
-        padding-right: 1.5rem;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+    #filters{
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+    }
+    .nav-link{
+        font-size: 1rem;
     }
 }
 
@@ -210,19 +222,51 @@ body{
         height: 400px;
     }
     .page-body{
-        padding-left: 1.5rem;
-        padding-right: 1.5rem;
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
     }
     .index-page{
+        padding-left: 0.47rem;
+        padding-right: 0.47rem;
+    }
+    #filters{
         padding-left: 1.5rem;
         padding-right: 1.5rem;
     }
+    .nav-link{
+        font-size: 1.15rem;
+    }
+}
+
+.navbar-collapse {
+    height: auto !important;
 }
 
 @media (max-width:768px) {
     .navbar-collapse{
+        box-shadow: 0 4px 10px -8px rgba(0,0,0,0.2);
+        border-radius: 0 0 25px 25px;
         background-color: #f9f9f9;
-        border:1px solid #dadada;
-        padding: 1.5rem 1rem 0.5rem 1rem;
+        border-bottom:1px solid #dadada;
+        padding: 1.25rem 2rem 0.5rem 2rem;
+    }
+    .navbar-collapse {
+        position: absolute;
+        top: 80%;
+        left: 0;
+        width: 100%;
+        background: #f9f9f9;
+        z-index: 999;
+
+        opacity: 0;
+        transform: translateY(1px) scale(0.98);
+        transition: all 0.25s ease;
+
+        pointer-events: none;
+    }
+    .navbar-collapse.show {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        pointer-events: auto;
     }
 }

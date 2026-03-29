@@ -1,23 +1,23 @@
 <nav class="navbar navbar-expand-md bg-body-light border-bottem sticky-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="/listings"><i class="fa-regular fa-compass"></i></a>
-        <div class="navbar-nav me-auto">
+        <a class="navbar-brand nav-fix" href="/listings"><i class="fa-regular fa-compass"></i></a>
+        <div class="navbar-nav me-auto nav-fix">
                 <a class="nav-link mb-1" href="/listings"><b>Explore</b></a>
         </div>
-        <button class="navbar-toggler" 
+        <button class="navbar-toggler nav-fix" 
         type="button"
         data-bs-toggle="collapse" 
         data-bs-target="#navbarNavAltMarkup">
         <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav search-bar mb-2 ms-auto">
+            <div class="navbar-nav search-bar mb-2 mx-auto">
                     <form class="d-flex" action="/listings/search" method="GET" role="search">
                     <input class="form-control me-2 search-inp" type="text" name="query"  placeholder="Search destination"/>
                     <button class="btn search-btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
-                     </form>
+                    </form>
             </div>
-            <div class="navbar-nav ms-auto">
+            <div class="navbar-nav">
                 <a class="nav-link" href="/listings/new"><b>New Listing</b></a>
                 <%if(!currUser){%>
                     <a class="nav-link" href="/signup"><b>Sign up</b> </a>
