@@ -188,6 +188,9 @@ body{
         margin-right: 1.5rem;
         margin-top: 1rem;
     }
+    .card-img-top{
+        height: 189.59px !important;
+    }
     #map{
         height: 189.59px !important;
     }
@@ -252,7 +255,7 @@ body{
     }
     .navbar-collapse {
         position: absolute;
-        top: 80%;
+        top: 83%;
         left: 0;
         width: 100%;
         background: #f9f9f9;
