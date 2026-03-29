@@ -6,20 +6,20 @@
 <br>
       <img src="<%=listing.image.url%>" class="card-img-top show-img" alt="listing_image">
       <div class="card-body">
-        <p class="card-text">Owned by <b><i><%=listing.owner.username%></i></b></p>
-        <p class="card-text"><%=listing.description%></p>
-        <p class="card-text"><b>&#8377 <%=listing.price.toLocaleString("en-IN")%> / night</b> </p>
-        <p class="card-text"><%=listing.location%> , <%=listing.country%></p>
+        <p class="card-text ms-1">Owned by <b><i><%=listing.owner.username%></i></b></p>
+        <p class="card-text ms-1"><%=listing.description%></p>
+        <p class="card-text ms-1"><b>&#8377 <%=listing.price.toLocaleString("en-IN")%> / night</b> </p>
+        <p class="card-text ms-1"><%=listing.location%> , <%=listing.country%></p>
       </div>
       <div class="row btns">
 
           <% if(currUser && currUser._id.equals(listing.owner._id)){%>
           <div class="col-2">
-              <a href="/listings/<%=listing._id%>/edit" class="btn btn-dark add-btn mt-3">Edit</a>
+              <a href="/listings/<%=listing._id%>/edit" class="btn btn-dark add-btn ms-1 mt-3">Edit</a>
           </div>
           <div class="col-2">
               <form method="post" action="/listings/<%=listing._id%>?_method=delete">
-                  <button class="btn btn-dark dark-btn mt-3">Delete</button>
+                  <button class="btn btn-dark dark-btn mt-3" id="dlt-btn-show">Delete</button>
               </form>
           </div>
           <%}%>
@@ -29,9 +29,9 @@
 
     <%if(currUser){%>
         <hr><br>
-    <div class="review ">
-        <div class="enterReview">
         <h4>Leave Review</h4>
+    <div class="review ms-1">
+        <div class="enterReview">
         <form action="/listings/<%=listing._id%>/reviews" novalidate class="needs-validation" method="post">
             <div class="mb-3 mt-3">
             <label for="rating" class="form-label">Rating</label>
@@ -63,10 +63,10 @@
         <hr>
         <br>
         <p><b>All Reviews :</b></p>
-        <div class="row ">
+        <div class="row ms-1" id="rev-divcard">
 
         <%for(review of listing.reviews){%>
-        <div class="card col-10 col-sm-5 ms-4 mb-3">
+        <div class="card col-12 col-sm-5 mb-4 me-4 ms-4" id="rev-card">
             <div class="card-body">
                 <h5 class="card-title">@<%=review.author.username%></h5>
                 <p class="starability-result card-text" data-rating=<%=review.rating%>></p>

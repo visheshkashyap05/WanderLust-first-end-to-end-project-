@@ -51,6 +51,10 @@ body{
     color: #222222 !important;
 }
 
+#rev-card{
+    margin: 0 ;
+}
+
 /* footer */
 .f-info-links a{
     text-decoration: none;
@@ -181,6 +185,15 @@ body{
 
 /* responsive */
 @media (max-width: 480px){
+    #rev-card{
+        margin: 0rem 0 1rem 0 !important;
+    }
+    #rev-divcard{
+        margin: 0
+    }
+    #dlt-btn-show{
+        margin-left: 2rem;
+    }
     .tax-toggle{
         margin: auto;
     }
