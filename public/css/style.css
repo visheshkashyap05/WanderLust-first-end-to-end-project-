@@ -134,7 +134,7 @@ body{
 .filter{
   text-align: center;
   margin-right: 2rem;
-  margin-top: 2rem;
+  margin-top: 0.75rem;
   opacity: 0.7;
 }
 .filter:hover{
@@ -153,6 +153,7 @@ body{
   border-radius: 1rem;
   height: 3rem;
   padding: 0.65rem;
+  margin-bottom: 1.25rem;
   margin-left: auto;
 }
 
@@ -197,12 +198,16 @@ body{
     .tax-toggle{
         margin: auto;
     }
+    .tax-toggle{
+        margin-bottom: 1rem;
+    }
     .filter{
         margin-right: 1.5rem;
-        margin-top: 1rem;
+        margin-top: 0.25rem;
     }
     .card-img-top{
         height: 189.59px !important;
+
     }
     #card-text{
         margin-left: 0.35rem !important;
