@@ -191,6 +191,9 @@ body{
     .card-img-top{
         height: 189.59px !important;
     }
+    #card-text{
+        margin-left: 0.35rem !important;
+    }
     #map{
         height: 189.59px !important;
     }
